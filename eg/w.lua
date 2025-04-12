@@ -1,3 +1,5 @@
+print("HAIII")
+
 if game:GetService("TextChatService").ChatVersion==Enum.ChatVersion.TextChatService then
 	local z=Instance.new("TextChatCommand",game:GetService("TextChatService"))
 	z.PrimaryAlias="🤬"
