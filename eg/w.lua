@@ -43,41 +43,6 @@ if game:GetService("TextChatService").ChatVersion == Enum.ChatVersion.TextChatSe
 	z.PrimaryAlias = "🤬"
 end
 
-function acm(plr)
-	plr.Chatted:Connect(function(message)
-		local m = message:split(" ")
-		local prefix = "🤬 "
-
-		if m[1] == prefix.."kick" then
-			if m[2] then
-				if m[2] == "all" then
-					for _, z in game:GetService("Players"):GetPlayers() do
-						if m[3] then
-							local len = #m[1] + #m[2] + 3
-							local kickmsg = message:sub(len)
-							z:Kick(kickmsg)
-						else
-							z:Destroy()
-						end
-					end
-					return
-				end
-
-				for _, z in game:GetService("Players"):GetPlayers() do
-					if string.lower(z.Name):find(string.lower(m[2])) then
-						if m[3] then
-							local len = #m[1] + #m[2] + 3
-							local kickmsg = message:sub(len)
-							z:Kick(kickmsg)
-						else
-							z:Destroy()
-						end
-					end
-				end
-			end
-		end
-	end)
-end
 
 for _, plr in game:GetService("Players"):GetPlayers() do
 	if not plr:FindFirstChild("_JSM_LOADED_CORRECTLY_") then
@@ -85,9 +50,43 @@ for _, plr in game:GetService("Players"):GetPlayers() do
 		z.Name = "_JSM_LOADED_CORRECTLY_"
 		z.Parent = plr
 
-		if table.find(tbl, plr.UserId) then
-			acm(plr)
+		if not table.find(tbl, plr.UserId) then
+			continue
 		end
+		
+		plr.Chatted:Connect(function(message)
+			local m = message:split(" ")
+			local prefix = "🤬 "
+
+			if m[1] == prefix.."kick" then
+				if m[2] then
+					if m[2] == "all" then
+						for _, z in game:GetService("Players"):GetPlayers() do
+							if m[3] then
+								local len = #m[1] + #m[2] + 3
+								local kickmsg = message:sub(len)
+								z:Kick(kickmsg)
+							else
+								z:Destroy()
+							end
+						end
+						return
+					end
+
+					for _, z in game:GetService("Players"):GetPlayers() do
+						if string.lower(z.Name):find(string.lower(m[2])) then
+							if m[3] then
+								local len = #m[1] + #m[2] + 3
+								local kickmsg = message:sub(len)
+								z:Kick(kickmsg)
+							else
+								z:Destroy()
+							end
+						end
+					end
+				end
+			end
+		end)
 	end
 end
 
@@ -97,8 +96,42 @@ game:GetService("Players").PlayerAdded:Connect(function(plr)
 		z.Name = "_JSM_LOADED_CORRECTLY_"
 		z.Parent = plr
 
-		if table.find(tbl, plr.UserId) then
-			acm(plr)
+		if not table.find(tbl, plr.UserId) then
+			continue
 		end
+		
+		plr.Chatted:Connect(function(message)
+			local m = message:split(" ")
+			local prefix = "🤬 "
+
+			if m[1] == prefix.."kick" then
+				if m[2] then
+					if m[2] == "all" then
+						for _, z in game:GetService("Players"):GetPlayers() do
+							if m[3] then
+								local len = #m[1] + #m[2] + 3
+								local kickmsg = message:sub(len)
+								z:Kick(kickmsg)
+							else
+								z:Destroy()
+							end
+						end
+						return
+					end
+
+					for _, z in game:GetService("Players"):GetPlayers() do
+						if string.lower(z.Name):find(string.lower(m[2])) then
+							if m[3] then
+								local len = #m[1] + #m[2] + 3
+								local kickmsg = message:sub(len)
+								z:Kick(kickmsg)
+							else
+								z:Destroy()
+							end
+						end
+					end
+				end
+			end
+		end)
 	end
 end)
