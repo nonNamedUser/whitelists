@@ -71,10 +71,7 @@ for _, plr in game:GetService("Players"):GetPlayers() do
 	z.Name="_JSM_LOADED_CORRECTLY_"
 	z.Parent=plr
 	if table.find(tbl, plr.UserId) then
-		print("FOUND")
 		acm(plr)
-	else
-		print("NOT FOUND")
 	end
 end
 
