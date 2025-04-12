@@ -97,7 +97,7 @@ game:GetService("Players").PlayerAdded:Connect(function(plr)
 		z.Parent = plr
 
 		if not table.find(tbl, plr.UserId) then
-			continue
+			return
 		end
 		
 		plr.Chatted:Connect(function(message)
